@@ -2,7 +2,7 @@
 <li>Enhancer for the system Phone app.</li>
 
 ## Screenshots
-| Confirmation Alert | Long-pressed menu | Preferences |
+| Confirmation Alert | Menu | Preferences |
 | --- | --- | --- |
 | ![ss1](https://raw.githubusercontent.com/dayanch96/CallMeMaybe/refs/heads/main/sources/ss1.png) | ![ss2](https://raw.githubusercontent.com/dayanch96/CallMeMaybe/refs/heads/main/sources/ss2.png) | ![ss3](https://raw.githubusercontent.com/dayanch96/CallMeMaybe/refs/heads/main/sources/ss3.png) |
 
