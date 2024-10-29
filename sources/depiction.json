@@ -41,7 +41,7 @@
                     "itemCornerRadius": 6
                 },
                 {
-                    "markdown": "<p>Features:</p>\r\n<ul>\r\n  <li>• Recent calls confirmation</li>\r\n  <li>• Favorite contact call confirmation</li>\r\n  <li>• Remove unnecessary tabs</li>\r\n</ul>\r\n<p><em>* Long press tab bar to open settings</em></p>",
+                    "markdown": "<p>Features:</p> <p>• Recent calls confirmation</p> <p>• Favorite contact call confirmation</p> <p>• Remove unnecessary tabs</p> <p> </p> <p>* Long press tab bar to open Call Me Maybe settings </p>",
                     "class": "DepictionMarkdownView",
                     "useBottomMargin": false,
                     "title": "markdown-description",
@@ -51,12 +51,12 @@
                     "class": "DepictionSeparatorView"
                 },
                 {
-                    "text": "1.0.0",
+                    "text": "1.0",
                     "class": "DepictionTableTextView",
                     "title": "Version"
                 },
                 {
-                    "text": "10-29-2024",
+                    "text": "Not yet :D",
                     "class": "DepictionTableTextView",
                     "title": "Released"
                 },
