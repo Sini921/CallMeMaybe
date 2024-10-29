@@ -41,7 +41,7 @@
                     "itemCornerRadius": 6
                 },
                 {
-                    "markdown": "<p>Features:</p> <p>• Recent calls confirmation</p> <p>• Favorite contact call confirmation</p> <p>• Remove unnecessary tabs</p> <p> </p> <p>* Long press tab bar to open Call Me Maybe settings </p>",
+                    "markdown": "### Features:\n- Recent calls confirmation\n- Favorite contact call confirmation\n- Remove unnecessary tabs\n\n*Long press the tab bar to open Call Me Maybe settings*",
                     "class": "DepictionMarkdownView",
                     "useBottomMargin": false,
                     "title": "markdown-description",
