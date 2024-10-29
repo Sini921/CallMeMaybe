@@ -1,0 +1,22 @@
+"CMM.Settings" = "Настройки %@";
+
+"Confirmation.Header" = "Требовать подтверждение";
+"Favorites" = "Избранные контакты";
+"RecentCalls" = "Недавние звонки";
+"Confirmation.Footer" = "Нажатие по контактам в соответствующих вкладках будет отображать окно, требующее подтверждения, перед совершением звонка.";
+
+"Tabs.Header" = "Настройки вкладок";
+"HideFavsTab" = "Скрыть вкладку «Избранные»";
+"HideRecentsTab" = "Скрыть вкладку «Недавние»";
+"HideContactsTab" = "Скрыть вкладку «Контакты»";
+"HideVoicemailTab" = "Скрыть вкладку «Автоответчик»";
+
+"ResetSettings" = "Сбросить настройки";
+
+"FollowMe" = "Подписаться на мой Twitter";
+"Github" = "Исходный код проекта";
+"Patreon" = "Подписаться на мой Patreon";
+"Coffee" = "Угостить чашечкой кофе";
+
+"CallConfirm" = "Хотите позвонить контакту %@?"; // Example: Do you want to call Mom
+"Hint" = "Заметка: %@"; // Example: Hint: mobile

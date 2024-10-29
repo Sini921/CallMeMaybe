@@ -1,0 +1,23 @@
+"CMM.Settings" = "%@ settings";
+
+"Confirmation.Header" = "Require Confirmation";
+"Favorites" = "Favorites contacts";
+"RecentCalls" = "Recent calls";
+"Confirmation.Footer" = "Clicking on contacts in the respective tabs will display a confirmation window before making a call.";
+
+"Tabs.Header" = "Tab settings";
+"HideFavsTab" = "Hide Favorites tab";
+"HideRecentsTab" = "Hide Recents tab";
+"HideContactsTab" = "Hide Contacts tab";
+"HideVoicemailTab" = "Hide Voicemail tab";
+"Tabs.Footer" = "Changes will take effect after restarting the app.";
+
+"ResetSettings" = "Reset settings to defaults";
+
+"FollowMe" = "Follow me on Twitter";
+"Github" = "Source code of the project";
+"Patreon" = "Follow me on Patreon";
+"Coffee" = "Buy me a cup of coffee";
+
+"CallConfirm" = "Do you want to call %@?"; // Example: Do you want to call Mom
+"Hint" = "Hint: %@"; // Example: Hint: mobile

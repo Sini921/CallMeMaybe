@@ -1,0 +1,23 @@
+"CMM.Settings" = "%@ ayarları";
+
+"Confirmation.Header" = "Onay Gerektir";
+"Favorites" = "Favori kişiler";
+"RecentCalls" = "Son aramalar";
+"Confirmation.Footer" = "İlgili sekmelerdeki kişilere tıkladığınızda, arama yapmadan önce bir onay penceresi görüntülenecektir.";
+
+"Tabs.Header" = "Sekme ayarları";
+"HideFavsTab" = "Favoriler sekmesini gizle";
+"HideRecentsTab" = "Son aramalar sekmesini gizle";
+"HideContactsTab" = "Kişiler sekmesini gizle";
+"HideVoicemailTab" = "Sesli mesaj sekmesini gizle";
+"Tabs.Footer" = "Değişiklikler, uygulama yeniden başlatıldıktan sonra geçerli olacaktır.";
+
+"ResetSettings" = "Ayarları varsayılanlara sıfırla";
+
+"FollowMe" = "Beni Twitter'da takip et";
+"Github" = "Projenin kaynak kodu";
+"Patreon" = "Patreon'da beni takip et";
+"Coffee" = "Bana bir fincan kahve al";
+
+"CallConfirm" = "%@ adlı kişiyi aramak istiyor musunuz?";
+"Hint" = "İpucu: %@";
