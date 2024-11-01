@@ -5,12 +5,21 @@
 "RecentCalls" = "Recent calls";
 "Confirmation.Footer" = "Clicking on contacts in the respective tabs will display a confirmation window before making a call.";
 
-"Tabs.Header" = "Tab settings";
+"Recents.Header" = "Recent Calls Settings";
+"NoTelCalls" = "Exclude Phone calls";
+"NoTelCallsDesc" = "Excludes all phone calls from the recent calls list.";
+"NoAppCalls" = "Exclude App calls";
+"NoAppCallsDesc" = "Removes all calls made through third-party apps (WhatsApp, Telegram, etc.) from the recent calls list.";
+"NoFTCalls" = "Exclude FaceTime calls";
+"NoFTCallsDesc" = "Removes all FaceTime calls from the recent calls list.";
+"Recents.Footer" = "At least one option must remain disabled. Changes will take effect after restarting the app.";
+
+"Tabs.Header" = "Tab Settings";
 "HideFavsTab" = "Hide Favorites tab";
 "HideRecentsTab" = "Hide Recents tab";
 "HideContactsTab" = "Hide Contacts tab";
+"HideKeypadTab" = "Hide Keypad tab";
 "HideVoicemailTab" = "Hide Voicemail tab";
-"Tabs.Footer" = "Changes will take effect after restarting the app.";
 
 "ResetSettings" = "Reset settings to defaults";
 
@@ -21,3 +30,5 @@
 
 "CallConfirm" = "Do you want to call %@?"; // Example: Do you want to call Mom
 "Hint" = "Hint: %@"; // Example: Hint: mobile
+"Warning" = "Warning";
+"Error.OneTab" = "At least one tab must remain enabled";

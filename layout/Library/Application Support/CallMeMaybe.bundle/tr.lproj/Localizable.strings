@@ -5,12 +5,21 @@
 "RecentCalls" = "Son aramalar";
 "Confirmation.Footer" = "İlgili sekmelerdeki kişilere tıkladığınızda, arama yapmadan önce bir onay penceresi görüntülenecektir.";
 
-"Tabs.Header" = "Sekme ayarları";
-"HideFavsTab" = "Favoriler sekmesini gizle";
+"Recents.Header" = "Son Aramalar Ayarları";
+"NoTelCalls" = "Telefon aramalarını gizle";
+"NoTelCallsDesc" = "Tüm telefon aramalarını son aramalar listesinden hariç tutar.";
+"NoAppCalls" = "Uygulama aramalarını gizle";
+"NoAppCallsDesc" = "Üçüncü taraf uygulamalardan (WhatsApp, Telegram vb.) yapılan tüm aramaları son aramalar listesinden hariç tutar.";
+"NoFTCalls" = "FaceTime aramalarını gizle";
+"NoFTCallsDesc" = "Tüm FaceTime aramalarını son aramalar listesinden hariç tutar.";
+"Recents.Footer" = "En az bir arama türü görünür kalmalıdır. Değişiklikler, uygulama yeniden başlatıldıktan sonra geçerli olacaktır.";
+
+"Tabs.Header" = "Sekme Ayarları";
+"HideFavsTab" = "Hızlı arama sekmesini gizle";
 "HideRecentsTab" = "Son aramalar sekmesini gizle";
 "HideContactsTab" = "Kişiler sekmesini gizle";
+"HideKeypadTab" = "Klavye mesaj sekmesini gizle";
 "HideVoicemailTab" = "Sesli mesaj sekmesini gizle";
-"Tabs.Footer" = "Değişiklikler, uygulama yeniden başlatıldıktan sonra geçerli olacaktır.";
 
 "ResetSettings" = "Ayarları varsayılanlara sıfırla";
 
@@ -21,3 +30,5 @@
 
 "CallConfirm" = "%@ adlı kişiyi aramak istiyor musunuz?";
 "Hint" = "İpucu: %@";
+"Warning" = "Dikkat";
+"Error.OneTab" = "En az bir sekme etkin kalmalıdır";
