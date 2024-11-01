@@ -1,6 +1,6 @@
   {
     "minVersion": "0.1",
-    "headerImage": "https://raw.githubusercontent.com/dayanch96/CallMeMaybe/refs/heads/main/sources/header.png",
+    "headerImage": "https://raw.githubusercontent.com/dayanch96/CallMeMaybe/refs/heads/main/Resources/header.png",
     "class": "DepictionTabView",
     "tintColor": "#83AEF8",
     "tabs": [
@@ -25,15 +25,15 @@
                     "screenshots": [
                         {
                             "accessibilityText": "Screenshot0",
-                            "url": "https://raw.githubusercontent.com/dayanch96/CallMeMaybe/refs/heads/main/sources/ss1.png"
+                            "url": "https://raw.githubusercontent.com/dayanch96/CallMeMaybe/refs/heads/main/Resources/ss1.png"
                         },
                         {
                             "accessibilityText": "Screenshot1",
-                            "url": "https://raw.githubusercontent.com/dayanch96/CallMeMaybe/refs/heads/main/sources/ss2.png"
+                            "url": "https://raw.githubusercontent.com/dayanch96/CallMeMaybe/refs/heads/main/Resources/ss2.png"
                         },
                         {
                             "accessibilityText": "Screenshot2",
-                            "url": "https://raw.githubusercontent.com/dayanch96/CallMeMaybe/refs/heads/main/sources/ss3.png"
+                            "url": "https://raw.githubusercontent.com/dayanch96/CallMeMaybe/refs/heads/main/Resources/ss3.png"
                         }
                     ],
                     "itemSize": "{160, 275.41333333333336}",
