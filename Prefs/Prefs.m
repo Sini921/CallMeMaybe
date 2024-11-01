@@ -8,6 +8,7 @@
 {
     NSArray *_sections;
     NSArray *_main;
+    NSArray *_recents;
     NSArray *_tabs;
     NSArray *_reset;
     NSArray *_developer;
@@ -23,10 +24,17 @@
             @{@"title": @"RecentCalls", @"icon": @"clock.fill", @"type": @"bool", @"key": @"confirmRecents", @"id": @"mainCell"}
         ];
 
+        _recents = @[
+            @{@"title": @"NoTelCalls", @"desc": @"NoTelCallsDesc", @"icon": @"teletype", @"type": @"bool", @"key": @"hideTelCalls", @"id": @"recentsCell"},
+            @{@"title": @"NoAppCalls", @"desc": @"NoAppCallsDesc", @"icon": @"sparkles", @"type": @"bool", @"key": @"hideAppCalls", @"id": @"recentsCell"},
+            @{@"title": @"NoFTCalls", @"desc": @"NoFTCallsDesc", @"icon": @"video", @"type": @"bool", @"key": @"hideFTCalls", @"id": @"recentsCell"}
+        ];
+
         _tabs = @[
             @{@"title": @"HideFavsTab", @"icon": @"star", @"type": @"bool", @"key": @"hideFavsTab", @"id": @"tabsCell"},
             @{@"title": @"HideRecentsTab", @"icon": @"clock", @"type": @"bool", @"key": @"hideRecentsTab", @"id": @"tabsCell"},
             @{@"title": @"HideContactsTab", @"icon": @"person.crop.circle", @"type": @"bool", @"key": @"hideContactsTab", @"id": @"tabsCell"},
+            @{@"title": @"HideKeypadTab", @"icon": @"circle.grid.3x3", @"type": @"bool", @"key": @"hideKeypadTab", @"id": @"tabsCell"},
             @{@"title": @"HideVoicemailTab", @"icon": @"recordingtape", @"type": @"bool", @"key": @"hideVoicemailTab", @"id": @"tabsCell"},
         ];
 
@@ -41,7 +49,7 @@
             @{@"title": @"Coffee", @"icon": @"coffee", @"type": @"link", @"key": @"https://buymeacoffee.com/dayanch96", @"id": @"devCell"}
         ];
 
-        _sections = @[_main, _tabs, _reset, _developer];
+        _sections = @[_main, _recents, _tabs, _reset, _developer];
 
         self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithImage:[UIImage systemImageNamed:@"xmark"]
                                                                                  style:UIBarButtonItemStylePlain
@@ -79,6 +87,10 @@
         header = @"Confirmation.Header";
     }
 
+    if (section == [_sections indexOfObject:_recents]) {
+        header = @"Recents.Header";
+    }
+
     if (section == [_sections indexOfObject:_tabs]) {
         header = @"Tabs.Header";
     }
@@ -91,6 +103,10 @@
 
     if (section == [_sections indexOfObject:_main]) {
         footer = @"Confirmation.Footer";
+    }
+
+    if (section == [_sections indexOfObject:_recents]) {
+        footer = @"Recents.Footer";
     }
 
     if (section == _sections.count - 1) {
@@ -114,7 +130,12 @@
 
         if (data[@"title"]) {
             cell.textLabel.text = LOC(data[@"title"]);
-            cell.textLabel.numberOfLines = 0;
+            cell.textLabel.adjustsFontSizeToFitWidth = YES;
+        }
+
+        if (data[@"desc"]) {
+            cell.detailTextLabel.text = LOC(data[@"desc"]);
+            cell.detailTextLabel.numberOfLines = 0;
         }
 
         if ([data[@"type"] isEqualToString:@"bool"]) {
@@ -221,10 +242,41 @@
     }
 
     if (section == [_sections indexOfObject:_tabs]) {
+        NSInteger tabsCount = 0;
+
+        for (NSDictionary *tab in _tabs) {
+            if (!cmmBool(tab[@"key"])) {
+                tabsCount++;
+            }
+        }
+
+        if (tabsCount == 0 && sender.isOn == YES) {
+            [[CMMUserDefaults standardUserDefaults] setBool:NO forKey:data[@"key"]];
+
+            UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+
+            NSString *messageStr = [NSString stringWithFormat:@"%@\n\n%@", LOC(@"Warning"), LOC(@"Error.OneTab")];
+
+            NSMutableAttributedString *formattedStr = [[NSMutableAttributedString alloc] initWithString:messageStr];
+
+            [formattedStr addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:13] range:NSMakeRange(0, messageStr.length)];
+            [formattedStr addAttribute:NSForegroundColorAttributeName value:[UIColor systemRedColor] range:[messageStr rangeOfString:LOC(@"Warning")]];
+            [formattedStr addAttribute:NSFontAttributeName value:[UIFont boldSystemFontOfSize:13] range:[messageStr rangeOfString:LOC(@"Warning")]];
+
+            alertController.attributedTitle = [NSAttributedString attributedStringWithAttachment:[NSTextAttachment textAttachmentWithImage:[UIImage imageNamed:@"icon" inBundle:NSBundle.cmm_defaultBundle compatibleWithTraitCollection:nil]]];
+            alertController.attributedMessage = formattedStr.copy;
+
+            [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"OK", @"PHCarPlay", nil) style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                [sender setOn:NO animated:YES];
+            }]];
+
+            [self presentViewController:alertController animated:YES completion:nil];
+        }
+
         PhoneApplication *app = (PhoneApplication *)[[UIApplication sharedApplication] delegate];
         MPRootViewController *rootVC = [app valueForKey:@"_rootController"];
 
-        [rootVC.baseViewController showFavoritesTab:YES recentsTab:YES contactsTab:YES keypadTab:YES voicemailTab:YES];
+        [rootVC.baseViewController showFavoritesTab:YES recentsTab:YES contactsTab:YES keypadTab:!cmmBool(@"hideKeypadTab") voicemailTab:YES];
     }
 }
 

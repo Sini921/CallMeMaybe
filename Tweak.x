@@ -1,14 +1,9 @@
-#import "Prefs.h"
+#import "Headers/Private.h"
+#import "Headers/MPRecentsTableViewController.h"
+#import "Headers/MPFavoritesTableViewController.h"
+#import "Prefs/Prefs.h"
 
-@interface UIView (Private)
-- (UIViewController *)_viewControllerForAncestor;
-@end
-
-@interface UIAlertController (Private)
-@property (nonatomic, copy, readwrite, getter=_attributedMessage, setter=_setAttributedMessage:) NSAttributedString *attributedMessage;
-@end
-
-static NSAttributedString *attributedMsg(NSString *contact, NSString *source) {
+static NSAttributedString *alertMsg(NSString *contact, NSString *source) {
     NSString *confirmStr = [NSString stringWithFormat:LOC(@"CallConfirm"), contact];
     NSString *hintStr = [NSString stringWithFormat:LOC(@"Hint"), source];
     NSString *messageStr = [NSString stringWithFormat:@"%@\n\n%@", confirmStr, hintStr];
@@ -24,18 +19,6 @@ static NSAttributedString *attributedMsg(NSString *contact, NSString *source) {
     return [formattedStr copy];
 }
 
-@interface PHRecentsItem : NSObject
-@property (nonatomic, copy, readwrite) NSString *localizedTitle;
-@property (nonatomic, copy, readwrite) NSString *localizedSubtitle;
-@end
-
-@interface MPRecentsTableViewCell : UITableViewCell
-@property (nonatomic, strong, readwrite) PHRecentsItem *item;
-@end
-
-@interface MPRecentsTableViewController : UIViewController
-@end
-
 %hook MPRecentsTableViewController
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (!cmmBool(@"confirmRecents")) {
@@ -48,8 +31,10 @@ static NSAttributedString *attributedMsg(NSString *contact, NSString *source) {
         return %orig;
     }
 
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Call Me Maybe" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    alertController.attributedMessage = attributedMsg(cell.item.localizedTitle, cell.item.localizedSubtitle);
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+
+    alertController.attributedTitle = [NSAttributedString attributedStringWithAttachment:[NSTextAttachment textAttachmentWithImage:[UIImage imageNamed:@"icon" inBundle:NSBundle.cmm_defaultBundle compatibleWithTraitCollection:nil]]];
+    alertController.attributedMessage = alertMsg(cell.item.localizedTitle, cell.item.localizedSubtitle);
 
     [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"CALL", @"General", nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         %orig;
@@ -62,15 +47,6 @@ static NSAttributedString *attributedMsg(NSString *contact, NSString *source) {
     [self presentViewController:alertController animated:YES completion:nil];
 }
 %end
-
-@interface MPFavoritesTableViewCell : UITableViewCell
-@property (nonatomic, copy, readwrite) NSString *actionType;
-@property (nonatomic, strong, readwrite) UILabel *titleLabel;
-@property (nonatomic, strong, readwrite) UILabel *subtitleLabel;
-@end
-
-@interface MPFavoritesTableViewController : UIViewController
-@end
 
 %hook MPFavoritesTableViewController
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -88,8 +64,10 @@ static NSAttributedString *attributedMsg(NSString *contact, NSString *source) {
         return %orig;
     }
 
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Call Me Maybe" message:nil preferredStyle:UIAlertControllerStyleAlert];
-    alertController.attributedMessage = attributedMsg(cell.titleLabel.text, cell.subtitleLabel.text);
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
+
+    alertController.attributedTitle = [NSAttributedString attributedStringWithAttachment:[NSTextAttachment textAttachmentWithImage:[UIImage imageNamed:@"icon" inBundle:NSBundle.cmm_defaultBundle compatibleWithTraitCollection:nil]]];
+    alertController.attributedMessage = alertMsg(cell.titleLabel.text, cell.subtitleLabel.text);
 
     [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"CALL", @"General", nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
         %orig;
@@ -107,6 +85,15 @@ static NSAttributedString *attributedMsg(NSString *contact, NSString *source) {
 - (void)showFavoritesTab:(BOOL)favoritesTab recentsTab:(BOOL)recentsTab contactsTab:(BOOL)contactsTab keypadTab:(BOOL)keypadTab voicemailTab:(BOOL)voicemailTab {
     %orig(!cmmBool(@"hideFavsTab"), !cmmBool(@"hideRecentsTab"), !cmmBool(@"hideContactsTab"), keypadTab, !cmmBool(@"hideVoicemailTab"));
 }
+%end
+
+%hook MobilePhoneApplication
+- (BOOL)showsPhoneDialer { return !cmmBool(@"hideKeypadTab"); }
+
+- (BOOL)showsTelephonyRecents { return cmmBool(@"hideTelCalls") ? NO : %orig; }
+- (BOOL)showsThirdPartyRecents { return cmmBool(@"hideAppCalls") ? NO : %orig; }
+- (BOOL)showsFaceTimeAudioRecents { return cmmBool(@"hideFTCalls") ? NO : %orig; }
+- (BOOL)showsFaceTimeVideoRecents { return cmmBool(@"hideFTCalls") ? NO : %orig; }
 %end
 
 @interface UITabBar () <UIContextMenuInteractionDelegate>
