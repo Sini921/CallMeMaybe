@@ -1,11 +1,11 @@
-Package: com.dvntm.cmm
-Name: CallMeMaybe
+Package: com.sini.cmm
+Name: CallMeMaybe【rootless】
 Version: 0.0.1
 Architecture: iphoneos-arm
-Description: Enhancer for the system Phone app
+Description: 系统电话应用的收藏列表和通话记录列表点击号码弹出拨号确认弹窗。长按底栏弹出设置。根据开源代码重新编译，修改了一些细节并汉化。
 Maintainer: dvntm
-Author: dvntm
-Section: Tweaks
+Author: dvntm & Sini921
+Section: 越狱插件
 Depends: mobilesubstrate (>= 0.9.5000)
-Icon: https://raw.githubusercontent.com/dayanch96/CallMeMaybe/refs/heads/main/Resources/icon.png
-SileoDepiction: https://raw.githubusercontent.com/dayanch96/CallMeMaybe/main/Resources/depiction.json
+icon: https://sini921.github.io/repo/sileodepiction/icon/cmm.png
+Sileodepiction: https://sini921.github.io/repo/sileodepiction/cmm/js.json

@@ -6,7 +6,7 @@
 static NSAttributedString *alertMsg(NSString *contact, NSString *source) {
     NSString *confirmStr = [NSString stringWithFormat:LOC(@"CallConfirm"), contact];
     NSString *hintStr = [NSString stringWithFormat:LOC(@"Hint"), source];
-    NSString *messageStr = [NSString stringWithFormat:@"%@\n\n%@", confirmStr, hintStr];
+    NSString *messageStr = [NSString stringWithFormat:@"\n%@\n\n%@", confirmStr, hintStr];
 
     NSMutableAttributedString *formattedStr = [[NSMutableAttributedString alloc] initWithString:messageStr];
 
@@ -33,7 +33,12 @@ static NSAttributedString *alertMsg(NSString *contact, NSString *source) {
 
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
 
-    alertController.attributedTitle = [NSAttributedString attributedStringWithAttachment:[NSTextAttachment textAttachmentWithImage:[UIImage imageNamed:@"icon" inBundle:NSBundle.cmm_defaultBundle compatibleWithTraitCollection:nil]]];
+    // 创建 NSTextAttachment 并设置图片及位置
+    NSTextAttachment *attachment = [NSTextAttachment new];
+    attachment.image = [UIImage imageNamed:@"icon" inBundle:NSBundle.cmm_defaultBundle compatibleWithTraitCollection:nil];
+    attachment.bounds = CGRectMake(0, -8, attachment.image.size.width, attachment.image.size.height);  // 调整 Y 轴位置为 -8
+
+    alertController.attributedTitle = [NSAttributedString attributedStringWithAttachment:attachment];
     alertController.attributedMessage = alertMsg(cell.item.localizedTitle, cell.item.localizedSubtitle);
 
     [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"CALL", @"General", nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
@@ -66,7 +71,12 @@ static NSAttributedString *alertMsg(NSString *contact, NSString *source) {
 
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
 
-    alertController.attributedTitle = [NSAttributedString attributedStringWithAttachment:[NSTextAttachment textAttachmentWithImage:[UIImage imageNamed:@"icon" inBundle:NSBundle.cmm_defaultBundle compatibleWithTraitCollection:nil]]];
+    // 创建 NSTextAttachment 并设置图片及位置
+    NSTextAttachment *attachment = [NSTextAttachment new];
+    attachment.image = [UIImage imageNamed:@"icon" inBundle:NSBundle.cmm_defaultBundle compatibleWithTraitCollection:nil];
+    attachment.bounds = CGRectMake(0, -8, attachment.image.size.width, attachment.image.size.height);  // 调整 Y 轴位置为 -8
+
+    alertController.attributedTitle = [NSAttributedString attributedStringWithAttachment:attachment];
     alertController.attributedMessage = alertMsg(cell.titleLabel.text, cell.subtitleLabel.text);
 
     [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"CALL", @"General", nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
