@@ -1,7 +1,7 @@
 name: Theos CI
 
 on:
-  push:
+  # push:
   pull_request:
 
 jobs:
