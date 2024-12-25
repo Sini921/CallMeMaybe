@@ -46,7 +46,9 @@
             @{@"title": @"FollowMe", @"icon": @"dvn", @"type": @"link", @"key": @"https://twitter.com/dayanch96", @"id": @"devCell"},
             @{@"title": @"Github", @"icon": @"github", @"type": @"link", @"key": @"https://github.com/dayanch96/CallMeMaybe", @"id": @"devCell"},
             @{@"title": @"Patreon", @"icon": @"patreon", @"type": @"link", @"key": @"https://patreon.com/dayanch96", @"id": @"devCell"},
-            @{@"title": @"Coffee", @"icon": @"coffee", @"type": @"link", @"key": @"https://buymeacoffee.com/dayanch96", @"id": @"devCell"}
+            @{@"title": @"Coffee", @"icon": @"coffee", @"type": @"link", @"key": @"https://buymeacoffee.com/dayanch96", @"id": @"devCell"},
+            @{@"title": @"jbrepo", @"icon": @"jbrepo", @"type": @"link", @"key": @"https://sini921.github.io", @"id": @"devCell"},
+            @{@"title": @"Sini921", @"icon": @"SINI", @"type": @"link", @"key": @"https://sini921.github.io", @"id": @"devCell"}
         ];
 
         _sections = @[_main, _recents, _tabs, _reset, _developer];

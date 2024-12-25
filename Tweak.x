@@ -6,7 +6,7 @@
 static NSAttributedString *alertMsg(NSString *contact, NSString *source) {
     NSString *confirmStr = [NSString stringWithFormat:LOC(@"CallConfirm"), contact];
     NSString *hintStr = [NSString stringWithFormat:LOC(@"Hint"), source];
-    NSString *messageStr = [NSString stringWithFormat:@"%@\n\n%@", confirmStr, hintStr];
+    NSString *messageStr = [NSString stringWithFormat:@"\n%@\n\n%@", confirmStr, hintStr];
 
     NSMutableAttributedString *formattedStr = [[NSMutableAttributedString alloc] initWithString:messageStr];
 
@@ -33,7 +33,10 @@ static NSAttributedString *alertMsg(NSString *contact, NSString *source) {
 
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
 
-    alertController.attributedTitle = [NSAttributedString attributedStringWithAttachment:[NSTextAttachment textAttachmentWithImage:[UIImage imageNamed:@"icon" inBundle:NSBundle.cmm_defaultBundle compatibleWithTraitCollection:nil]]];
+    NSTextAttachment *iconAttachment = [[NSTextAttachment alloc] init];
+    iconAttachment.image = [UIImage imageNamed:@"icon" inBundle:NSBundle.cmm_defaultBundle compatibleWithTraitCollection:nil];
+    iconAttachment.bounds = CGRectMake(0, -8, iconAttachment.image.size.width, iconAttachment.image.size.height);
+    alertController.attributedTitle = [NSAttributedString attributedStringWithAttachment:iconAttachment];
     alertController.attributedMessage = alertMsg(cell.item.localizedTitle, cell.item.localizedSubtitle);
 
     [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"CALL", @"General", nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
@@ -66,7 +69,10 @@ static NSAttributedString *alertMsg(NSString *contact, NSString *source) {
 
     UIAlertController *alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleAlert];
 
-    alertController.attributedTitle = [NSAttributedString attributedStringWithAttachment:[NSTextAttachment textAttachmentWithImage:[UIImage imageNamed:@"icon" inBundle:NSBundle.cmm_defaultBundle compatibleWithTraitCollection:nil]]];
+    NSTextAttachment *iconAttachment = [[NSTextAttachment alloc] init];
+    iconAttachment.image = [UIImage imageNamed:@"icon" inBundle:NSBundle.cmm_defaultBundle compatibleWithTraitCollection:nil];
+    iconAttachment.bounds = CGRectMake(0, -8, iconAttachment.image.size.width, iconAttachment.image.size.height);
+    alertController.attributedTitle = [NSAttributedString attributedStringWithAttachment:iconAttachment];
     alertController.attributedMessage = alertMsg(cell.titleLabel.text, cell.subtitleLabel.text);
 
     [alertController addAction:[UIAlertAction actionWithTitle:NSLocalizedStringFromTable(@"CALL", @"General", nil) style:UIAlertActionStyleDestructive handler:^(UIAlertAction * _Nonnull action) {
